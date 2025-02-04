@@ -1,0 +1,2 @@
+- setup project
+- in client : setup store using redux-toolkit
