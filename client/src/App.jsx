@@ -1,10 +1,8 @@
 import React from 'react'
-import { Button } from "@/components/ui/button"
 import { Route, Routes } from 'react-router-dom'
 import AuthLayout from './components/auth/layout'
 import AuthLogin from './pages/auth/login'
 import AuthRegister from './pages/auth/register'
-import AdminLayout from './components/admin-view/layout'
 import AdminDashboard from './pages/admin-view/dashboard'
 import AdminProduct from './pages/admin-view/product'
 import AdminOrder from './pages/admin-view/order'
@@ -17,10 +15,13 @@ import ShoppingCheckout from './pages/shopping-view/checkout'
 import ShoppingAccount from './pages/shopping-view/account'
 import CheckAuth from './components/common/check-auth'
 import UnAuthPage from './pages/unauth-page'
+import { useSelector } from 'react-redux'
+import AdminLayout from './components/admin-view/layout'
 
 export default function App() {
-  const isAuthenticated = false
-  const user = null
+
+  const { isAuthenticated, user } = useSelector(state => state.auth)
+  
   return (
     <div className='flex flex-col overflow-hidden bg-white'>
 
@@ -36,7 +37,7 @@ export default function App() {
         </Route>
         <Route path="/admin" element={
           <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-            <AuthLayout />
+            <AdminLayout />
           </CheckAuth>
         }>
           <Route path='dashboard' element={<AdminDashboard />} />

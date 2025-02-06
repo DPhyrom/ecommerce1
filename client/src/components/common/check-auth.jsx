@@ -2,12 +2,14 @@ import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 
 export default function CheckAuth({ isAuthenticated, user, children }) {
+
     const location = useLocation()
+
     if (!isAuthenticated && !(location.pathname.includes('/login') || location.pathname.includes('/register'))) {
         return <Navigate to="/auth/login"/>
     }
     if(isAuthenticated && (location.pathname.includes('/login') || location.pathname.includes('/register'))){
-        // ( ?. ) that we call -- Optional Chaining -- use to prevent
+        // ( ?. ) that we call -- Optional Chaining -- use to prevent user not defined
         if(user?.role === 'admin'){
             return <Navigate to="/admin/dashboard"/>
         }else{
