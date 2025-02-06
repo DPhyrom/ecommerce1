@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AuthLayout from './components/auth/layout'
 import AuthLogin from './pages/auth/login'
@@ -15,13 +15,31 @@ import ShoppingCheckout from './pages/shopping-view/checkout'
 import ShoppingAccount from './pages/shopping-view/account'
 import CheckAuth from './components/common/check-auth'
 import UnAuthPage from './pages/unauth-page'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AdminLayout from './components/admin-view/layout'
+import { checkAuth } from './store/auth-slice'
+import { Skeleton } from "@/components/ui/skeleton"
+
 
 export default function App() {
 
-  const { isAuthenticated, user } = useSelector(state => state.auth)
-  
+  const { isAuthenticated, user, isLoading } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+  const abc = ''
+
+  // run once when component mount
+  useEffect(() => {
+    dispatch(checkAuth())
+  }, [abc])
+
+  if (isLoading) return <div className="flex flex-col space-y-3 justify-center items-center">
+    <Skeleton className="h-1/2 w-1/2 rounded-xl" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-[550px]" />
+      <Skeleton className="h-4 w-[500px]" />
+    </div>
+  </div>
+
   return (
     <div className='flex flex-col overflow-hidden bg-white'>
 

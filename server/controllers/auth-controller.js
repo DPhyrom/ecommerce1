@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
         email: checkUser.email
     }, "CLIENT_SECRET_KEY", { expiresIn: "60m" })
 
-    res.cookie("token", token, {httpOnly: true, secure: false}).json({
+    res.cookie("token", token, { httpOnly: true, secure: false }).json({
         success: true,
         message: 'Logged in successfully',
         user: {
@@ -69,6 +69,33 @@ const loginUser = async (req, res) => {
 
 }
 
+// logout
+const logout = (req, res) => {
+    res.clearCookie('token').json({
+        success: true,
+        message: 'Logged out successfully!'
+    })
+}
 
+// auth middleware
+const authMiddleware = async (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({
+            success: false,
+            message: 'Unauthorized user'
+        })
+    }
+    try {
+        const decoded = jwt.verify(token, 'CLIENT_SECRET_KEY');
+        req.user = decoded;
+        next()
+    } catch(Error){
+        res.status(401).json({
+            success : false,
+            message : 'Unauthorized user!'
+        })
+    }
+}
 
-module.exports = { registerUser, loginUser }
+module.exports = { registerUser, loginUser, logout ,authMiddleware}
