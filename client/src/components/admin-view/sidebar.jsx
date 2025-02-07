@@ -7,11 +7,10 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet"
 
 
-export default function AdminSidebar({open,setOpen}) {
+export default function AdminSidebar({ open, setOpen }) {
   const navigate = useNavigate()
   return (
     <>
@@ -25,20 +24,20 @@ export default function AdminSidebar({open,setOpen}) {
               </div>
             </SheetTitle>
             <SheetDescription>
-                <nav className='mt-8 flex-col flex gap-2'>
-                  <div onClick={() => navigate('/admin/dashboard')} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
-                    <LayoutDashboard color="#000000" strokeWidth={2.5} />
-                    <span>Dashboard</span>
-                  </div>
-                  <div onClick={() => navigate('/admin/products')} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
-                    <ShoppingBasket color="#000000" strokeWidth={2.5} />
-                    <span>Product</span>
-                  </div>
-                  <div onClick={() => navigate('/admin/orders')} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
-                    <Barcode color="#000000" strokeWidth={2.5} />
-                    <span>Order</span>
-                  </div>
-                </nav>
+              <nav className='mt-8 flex-col flex gap-2'>
+                <div onClick={() => { navigate('/admin/dashboard'); setOpen(false)}} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
+                  <LayoutDashboard color="#000000" strokeWidth={2.5} />
+                  <span>Dashboard</span>
+                </div>
+                <div onClick={() => {navigate('/admin/products'); setOpen(false)}} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
+                  <ShoppingBasket color="#000000" strokeWidth={2.5} />
+                  <span>Product</span>
+                </div>
+                <div onClick={() => {navigate('/admin/orders'); setOpen(false)}} className='cursor-pointer flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:text-foreground'>
+                  <Barcode color="#000000" strokeWidth={2.5} />
+                  <span>Order</span>
+                </div>
+              </nav>
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
