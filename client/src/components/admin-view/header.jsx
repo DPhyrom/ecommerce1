@@ -11,7 +11,7 @@ export default function AdminHeader({setOpen}) {
 
   const Userlogout = () => {
 
-    dispatch(logout()).then(() => {
+    dispatch(logout()).then((data) => {
       if (data.payload.success) {
         toast({
           title: data?.payload?.message,

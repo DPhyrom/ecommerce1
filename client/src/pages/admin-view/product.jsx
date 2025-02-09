@@ -148,9 +148,11 @@ export default function AdminProduct() {
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                    <SelectItem value="Men">Men</SelectItem>
+                    <SelectItem value="Women">Women</SelectItem>
+                    <SelectItem value="Kids">Kids</SelectItem>
+                    <SelectItem value="Accessories">Accessories</SelectItem>
+                    <SelectItem value="Footwear">Footwear</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -162,9 +164,12 @@ export default function AdminProduct() {
                     <SelectValue placeholder="Brand" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                    <SelectItem value="Nike">Nike</SelectItem>
+                    <SelectItem value="Adidas">Adidas</SelectItem>
+                    <SelectItem value="Puma">Puma</SelectItem>
+                    <SelectItem value="Levi">Levi</SelectItem>
+                    <SelectItem value="Zara">Zara</SelectItem>
+                    <SelectItem value="H&M">H&M</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

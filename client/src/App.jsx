@@ -25,12 +25,12 @@ export default function App() {
 
   const { isAuthenticated, user, isLoading } = useSelector(state => state.auth)
   const dispatch = useDispatch()
-  const abc = ''
+
 
   // run once when component mount
   useEffect(() => {
     dispatch(checkAuth())
-  }, [abc])
+  }, [dispatch])
 
   if (isLoading) return <div className="flex flex-col space-y-3 justify-center items-center">
     <Skeleton className="h-1/2 w-1/2 rounded-xl" />
